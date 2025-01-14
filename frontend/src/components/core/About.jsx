@@ -5,8 +5,8 @@ import { FaRegCheckCircle } from "react-icons/fa";
 
 const About = () => {
   return (
-    <div id='about' className="min-h-screen flex flex-col items-center justify-center">
-      <div className='bg-[#fff] shadow-lg p-6'>
+    <div id='about' className="min-h-screen flex flex-col mb-6 items-center justify-center">
+      <div className='bg-[#fff] shadow-lg rounded-lg p-6'>
       {/* Container */}
       <div className="flex flex-col md:flex-row max-w-7xl w-full items-center  rounded overflow-hidden ">
         
@@ -25,7 +25,7 @@ const About = () => {
           "Unlock a world of career opportunities with our innovative campus recruitment platform."
           </p>
           <p className="text-lg mb-2">
-          Welcome to CampusJobQuest, a comprehensive campus recruitment system designed to bridge the gap between employers and talented students. 
+          Welcome to OpportuNest, a comprehensive campus recruitment system designed to bridge the gap between employers and talented students. 
           </p>
           <ul className="mb-2 text-lg">
             <li className='flex gap-2 items-start'><FaRegCheckCircle className='text-customDarkBlue text-[34px] leading-9'/><p>We simplify the job search process by offering personalized job recommendations based on student skills, preferences, and resume data.</p></li>
@@ -34,7 +34,7 @@ const About = () => {
             <li className='flex gap-2 items-start'><FaRegCheckCircle className='text-customDarkBlue text-3xl'/><p>Realistic mock tests simulate actual recruitment exams, helping students practice and improve their chances of success.</p></li>
           </ul>
           <p className="text-md mb-6">
-             Our dedicated team ensures exceptional support for both students and employers, making CampusJobQuest the go-to platform for seamless campus placements.
+             Our dedicated team ensures exceptional support for both students and employers, making OpportuNest the go-to platform for seamless campus placements.
           </p>
         </div>
       </div>

@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import toast from 'react-hot-toast';
+
+import { sendotp } from '../../../services/operations/authAPI';
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { ACCOUNT_TYPE } from '../../../utils/accoutnType';
 import Tab from './Tab';
+
+import { setSignupData } from '../../../slices/authSlice';
 
 
 const SignupForm = () => {
 
     const [accountType , setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
-
     const [showPassword , setShowPassword] = useState(false);
     const [showConfirmPassword , setShowConfirmPassword] = useState(false);
     
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
     const [formData , setFormData] = useState({
@@ -48,10 +52,18 @@ const SignupForm = () => {
 
         //setting Signup data to state
         //to be used after otp verification
-        // dispatch(setSignupData(signupData));
+        dispatch(setSignupData(signupData));
         
         //send OTP to user for verification
-        // dispatch(sendotp(email , navigate));
+        if(signupData.accountType === "Admin") {
+          navigate("/admin");
+        }
+        else if(signupData.accountType === "Placement") {
+          navigate("/placement");
+        }
+        else {
+          dispatch(sendotp(email , navigate));
+        }
 
         //Reset
         setFormData({
@@ -97,7 +109,7 @@ const SignupForm = () => {
           <div className='flex items-center gap-x-4'>
             <label className='w-full'>
               <p className='mb-1 text-[0.875rem] leading-[1.375rem] '>
-                First Name <span className='text-pink-200'>*</span>
+                First Name <span className='text-pink-600'>*</span>
               </p>
               <input
                 required
@@ -115,7 +127,7 @@ const SignupForm = () => {
 
             <label className='w-full'>
               <p className='mb-1 text-[0.875rem] leading-[1.375rem] '>
-                Last Name <span className='text-pink-200'>*</span>
+                Last Name <span className='text-pink-600'>*</span>
               </p>
               <input
                 required
@@ -135,7 +147,7 @@ const SignupForm = () => {
 
           <label className='w-full'>
               <p className='mb-1 text-[0.875rem] leading-[1.375rem]'>
-                Email Address <span className='text-pink-200'>*</span>
+                Email Address <span className='text-pink-600'>*</span>
               </p>
               <input
                 required
@@ -155,7 +167,7 @@ const SignupForm = () => {
 
             <label className='relative w-full'>
               <p className='mb-1 text-[0.875rem] leading-[1.375rem] '>
-                Create Password <span className='text-pink-200'>*</span>
+                Create Password <span className='text-pink-600'>*</span>
               </p>
               <input
                 required
@@ -184,7 +196,7 @@ const SignupForm = () => {
 
             <label className='relative w-full'>
               <p className='mb-1 text-[0.875rem] leading-[1.375rem] '>
-                Confirm Password <span className='text-pink-200'>*</span>
+                Confirm Password <span className='text-pink-600'>*</span>
               </p>
               <input
                 required
